@@ -1,17 +1,21 @@
-    So, you want to help develop the Stirling MUD engine?  Maybe you're directly
-helping me (emsenn), or have forked the code to work on it yourself.  Either way, 
-you should read this document first, to help you get started.  It has all the 
-vital information you should need to start turning ideas into code.
+    So, you're thinking about writing code using the Stirling engine?  Good!  
+And you want to make sure that you play nice with our main developers, so that 
+your code can get added to the official code?  Great!
+    In order to make sure that you and I can help each other with as little 
+friction as possible, it's important you read a bit on how the project is 
+managed.
 
-    Because I am not a very good marketer, I'm going to tell you everything 
-bad about this project right off the bat.  This should help save some people 
-time.
+    First, you should know, each and every developer on this project is a 
+complete and total git.  That is, we all use the software "git" for our 
+versioning control, and manage the project at github.com.  So, if you want to 
+participate with us, the first step will be to gain a basic understanding 
+of how to use git and github.  If you have any questions about that, see 
+/docs/dev/git
 
-    1) I'm not a skilled developer.  I possess the snarkiness and arrogance of 
-      your average FOSS developer, but that doesn't mean I have the skill to 
-      back it up.  This means, *feel free to tell me I'm wrong*.
+    Second, you should know that I'm [emsenn] not a very good developer.  If 
+you find some code of mine that you think is total rubbish, feel free to rewrite 
+it in a way that makes more sense.
 
-    2) I'm a big proponent of FOSS.  Everything I write for the MUD is licensed 
-      as WTFPL (http://emsenn.com/wtfpl.txt).  If you want your code to be 
-      included in the "official" development branch, please license it as WTFPL, 
-      it just saves everyone some time.
+    Third, if your code is ugly, uncommented, and you're a jerk about submitting 
+it, it will probably be denied out of hand.  Sorry, but we have to be able to 
+bugtest it and probably change it later.
