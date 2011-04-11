@@ -1,0 +1,6 @@
+multiplayer textual roleplaying game written in python 3
+
+all code WTFPL (http://emsenn.com/wtfpl.txt) unless stated otherwise.
+
+RUNNING Stirling
+To run Stirling: "python3.2 runserver.py"

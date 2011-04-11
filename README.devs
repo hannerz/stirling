@@ -1,0 +1,17 @@
+    So, you want to help develop the Stirling MUD engine?  Maybe you're directly
+helping me (emsenn), or have forked the code to work on it yourself.  Either way, 
+you should read this document first, to help you get started.  It has all the 
+vital information you should need to start turning ideas into code.
+
+    Because I am not a very good marketer, I'm going to tell you everything 
+bad about this project right off the bat.  This should help save some people 
+time.
+
+    1) I'm not a skilled developer.  I possess the snarkiness and arrogance of 
+      your average FOSS developer, but that doesn't mean I have the skill to 
+      back it up.  This means, *feel free to tell me I'm wrong*.
+
+    2) I'm a big proponent of FOSS.  Everything I write for the MUD is licensed 
+      as WTFPL (http://emsenn.com/wtfpl.txt).  If you want your code to be 
+      included in the "official" development branch, please license it as WTFPL, 
+      it just saves everyone some time.
