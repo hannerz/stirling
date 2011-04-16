@@ -6,9 +6,9 @@ abzde@Stirling 100411
 to players.
 """
 
-from stirling.lib.std.object import MasterObject
+from stirling.lib.std.object import Object
 
-class Player(MasterObject):
+class Player(Object):
     def __init__(self, username, conn):
         super(Player, self).__init__()
         self.name = username

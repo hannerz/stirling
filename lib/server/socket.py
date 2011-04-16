@@ -41,7 +41,13 @@ class StirlingServer():
                     player = Player(username, conn)
                     self.connections_player[conn] = player
                     self.logging_in.remove(conn)
-                    conn.send(b'In theory, you should be logged in.\n')
+                    conn.send(b'At this point, this is where test functions run.\n')
+                    # TEST FUNCTIONS GO HERE.  yes it's hackish, no I don't care.
+                    player.set_name(username)
+                    foobar = Player(username, conn)
+                    foobar.move(player)
+                    foobar.set_name('turnip')
+                    player.tell('Foobar: '+foobar.environment.name)
             else:
                 # If they've been logged in, pass the text to the player's
                 # object.
