@@ -39,20 +39,29 @@ class StirlingServer():
                 if recv_data == '':
                     # Connection closed.
                     conn.close()
-                    if self.connections_player.exists(conn): del self.connections_player[conn]
+                    if conn in self.connections_player: del self.connections_player[conn]
                     self.connections.remove(conn)
-                if conn in self.logging_in:
-                    # Outline the login process here!
-                    username=random.choice(string.ascii_lowercase)
-                    player = Player(username, conn)
-                    self.connections_player[conn] = player
-                    self.logging_in.remove(conn)
-                    conn.send(b'In theory, you should be logged in.\n')
                 else:
-                    # If they've been logged in, pass the text to the player's
-                    # object.
-                    # abzde - this passes funky markup - b'foobar\r\n'  Fix plz.
-                    self.connections_player[conn].handle_data(recv_data)
+                    if conn in self.logging_in:
+                        # Outline the login process here!
+                        username=''.join(random.choice(string.ascii_lowercase) for x in range(8))
+                        player = Player(username, conn)
+                        self.connections_player[conn] = player
+                        self.logging_in.remove(conn)
+                        conn.send(b'In theory, you should be logged in.\n')
+                    else:
+                        # If they've been logged in, pass the text to the player's
+                        # object.
+                        player = self.connections_player[conn]
+                        player.handle_data(recv_data)
+                        conn.send(b'At this point, this is where test functions run.\n')
+                        # TEST FUNCTIONS GO HERE.  yes it's hackish, no I don't care.
+                        foobar = Player('bacon!', conn)
+                        foobar.set_name(432)
+                        player.move(foobar)
+                        player.tell('Player environment: '+player.environment.name+'\n')
+                        for bar in foobar.inventory:
+                            player.tell('bar: '+bar.name+'\n')
 
     def handle_forever(self):
         while True:
@@ -60,5 +69,9 @@ class StirlingServer():
 
 def runserver():
     server = StirlingServer(('localhost', 5878))
-    server.handle_forever()
+    try:
+        server.handle_forever()
+    except:
+        server.socket.close()
+        raise
 
