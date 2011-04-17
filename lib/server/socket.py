@@ -44,10 +44,12 @@ class StirlingServer():
                     conn.send(b'At this point, this is where test functions run.\n')
                     # TEST FUNCTIONS GO HERE.  yes it's hackish, no I don't care.
                     player.set_name(username)
-                    foobar = Player(username, conn)
-                    foobar.move(player)
-                    foobar.set_name('turnip')
-                    player.tell('Foobar: '+foobar.environment.name)
+                    foobar = Player('bacon!', conn)
+                    foobar.set_name(432)
+                    player.move(foobar)
+                    player.tell('Player environment: '+player.environment.name+'\n')
+                    for bar in foobar.inventory:
+                        player.tell('bar: '+bar.name+'\n')
             else:
                 # If they've been logged in, pass the text to the player's
                 # object.
