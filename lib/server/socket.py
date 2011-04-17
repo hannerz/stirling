@@ -17,7 +17,6 @@ from stirling.lib.std.player import Player
 class StirlingServer():
     def __init__(self, addr):
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.socket.setblocking(0)
         self.socket.bind(addr)
         self.socket.listen(5)
         self.connections = []
@@ -35,18 +34,25 @@ class StirlingServer():
                 self.logging_in.append(new_conn)
                 # Connects are shown this first.
                 new_conn.send(b'Welcome to the Stirling Engine.\n')
-            elif conn in self.logging_in:
+            elif conn in self.connections:
+                recv_data = conn.recv(1024).decode()
+                if recv_data == '':
+                    # Connection closed.
+                    conn.close()
+                    if self.connections_player.exists(conn): del self.connections_player[conn]
+                    self.connections.remove(conn)
+                if conn in self.logging_in:
                     # Outline the login process here!
                     username=random.choice(string.ascii_lowercase)
                     player = Player(username, conn)
                     self.connections_player[conn] = player
                     self.logging_in.remove(conn)
                     conn.send(b'In theory, you should be logged in.\n')
-            else:
-                # If they've been logged in, pass the text to the player's
-                # object.
-                # abzde - this passes funky markup - b'foobar\r\n'  Fix plz.
-                self.connections_player[conn].handle_data(conn.recv(1024))
+                else:
+                    # If they've been logged in, pass the text to the player's
+                    # object.
+                    # abzde - this passes funky markup - b'foobar\r\n'  Fix plz.
+                    self.connections_player[conn].handle_data(recv_data)
 
     def handle_forever(self):
         while True:
