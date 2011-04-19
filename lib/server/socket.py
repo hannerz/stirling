@@ -13,6 +13,7 @@ import random
 import string
 
 from stirling.lib.special.player import Player
+from stirling.lib.std.room import Room
 
 class StirlingServer():
     def __init__(self, addr):
@@ -56,12 +57,11 @@ class StirlingServer():
                         player.handle_data(recv_data)
                         conn.send(b'At this point, this is where test functions run.\n')
                         # TEST FUNCTIONS GO HERE.  yes it's hackish, no I don't care.
-                        foobar = Player('bacon!', conn)
-                        foobar.set_name(432)
+                        foobar = Room()
+                        foobar.set_name('the bacon room')
                         player.move(foobar)
                         player.tell('Player environment: '+player.environment.name+'\n')
-                        for bar in foobar.inventory:
-                            player.tell('bar: '+bar.name+'\n')
+                        foobar.write('You hear a slight sizzle.')
 
     def handle_forever(self):
         while True:

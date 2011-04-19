@@ -9,21 +9,15 @@ The master object of the MUD, all objects inherit it at some point
 
 
 class MasterObject:
-    def __init__(self, instance = None):
+    def __init__(self):
         # Any variable which should be persistent needs to be set to default 
         # values in the __init__ of the library inheritable
         # (NOTE: Does this actually work?  I've read that [] is == None, which 
         # makes this kind of null and void.  Can we overwrite that if it's 
         # the proper approach?
-        if instance is None:
-            self.name = 'object'
-            self.inventory = []
-            self.environment = __class__ # This *does* make a blank class, right?
-            # environment.add_inventory(thisobject, couch.gen_instance_num())
-        elif instance:
-            # couch.load_instance(instance)
-            # Load the object from the database
-            pass
+        self.name = 'object'
+        self.inventory = []
+        self.environment = __class__ # This *does* make a blank class, right?
 
 
     # The two most basic functions: give an object a name and query it.

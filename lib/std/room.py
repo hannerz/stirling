@@ -1,22 +1,17 @@
 """
-/lib/std/player.py
-abzde@Stirling 100411
+/lib/std/room.py
+emsenn@Stirling 190411
 
-    The base player object - it contains the functions that are truly unique 
-to players.
+    The base room inheritable
 """
 
-from stirling.lib.std.object import Object
+from stirling.lib.std.object import MasterObject
 
-class Player(Object):
-    def __init__(self, username, conn):
-        super(Player, self).__init__()
-        self.name = username
-        self.connection = conn
+class Room(MasterObject):
+    def __init__(self):
+        super(Room, self).__init__()
 
-    def tell(self, data):
-        super(Player, self).tell(data)
-        self.connection.send(bytes(data, 'UTF-8'))
+    def write(self, data):
+        for item in self.inventory:
+            item.tell(data+'\n')
 
-    def handle_data(self, data):
-        self.tell("recieved: %s\n" % (data,))
