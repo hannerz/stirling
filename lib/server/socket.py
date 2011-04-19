@@ -12,7 +12,7 @@ import select
 import random
 import string
 
-from stirling.lib.std.player import Player
+from stirling.lib.special.player import Player
 
 class StirlingServer():
     def __init__(self, addr):
