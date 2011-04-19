@@ -1,0 +1,7 @@
+v0.0.0
+
+- Objects have environments
+- Functioning socket server
+- Basic room inheritable
+- Basic object inheritable
+- Basic player inheritable
