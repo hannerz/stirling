@@ -72,6 +72,11 @@ def runserver():
     try:
         server.handle_forever()
     except:
+        print('recived ^C, closing down')
+        print(c.connections)
+        [c.close() for c in server.connections]
+        print(c.connections)
         server.socket.close()
+        print('sockets closed, goodbye')
         raise
 
