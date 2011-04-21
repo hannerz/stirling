@@ -57,11 +57,6 @@ class StirlingServer():
                         player.handle_data(recv_data)
                         conn.send(b'At this point, this is where test functions run.\n')
                         # TEST FUNCTIONS GO HERE.  yes it's hackish, no I don't care.
-                        foobar = Room()
-                        foobar.set_name('the bacon room')
-                        player.move(foobar)
-                        player.tell('Player environment: '+player.environment.name+'\n')
-                        foobar.write('You hear a slight sizzle.')
 
     def handle_forever(self):
         while True:
