@@ -6,8 +6,6 @@ abzde@Stirling
 The master object of the MUD, all objects inherit it at some point
 """
 
-from lib.std.cmd_parser import CommandParser
-
 
 class MasterObject:
     def __init__(self):
@@ -19,7 +17,6 @@ class MasterObject:
         self.name = 'object'
         self.inventory = []
         self.environment = __class__ # This *does* make a blank class, right?
-        self.cmd_parser = CommandParser(self, ['std.cmd'])
 
     # The two most basic functions: give an object a name and query it.
     def set_name(self, name):

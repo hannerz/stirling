@@ -20,4 +20,4 @@ class Player(Living):
 
     def handle_data(self, data):
         self.tell("recieved: %s\n" % (data,))
-        self.cmd_parser.parse(data)
+        self.parse_line(data)
