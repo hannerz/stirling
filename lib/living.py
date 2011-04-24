@@ -16,7 +16,6 @@ class Living(MasterObject):
         self.command_modules = ['std.cmd']
 
     def parse_line(self, line):
-        print('parsing '+line)
         words = line.split()
         cmd_name = words[0]
         try:
@@ -26,30 +25,33 @@ class Living(MasterObject):
         # check if given command exists in the command modules
         for module in self.command_modules:
             try:
-                print('try to import')
-                print('stirling.lib.%s.%s' % (module, cmd_name)) # try to import it
                 __import__('stirling.lib.%s.%s' % (module, cmd_name)) # try to import it
                 cmd = sys.modules['stirling.lib.%s.%s' % (module, cmd_name)]
-                print('found')
                 break
             except ImportError: 
-                print('import error')
                 continue # not here, check the next one
         else:   
             # command doesn't exist
-            # do stuff
-            print('no such')
             self.tell('No such command: %s\n' % (cmd_name,))
             return False
         try:
-            print('call')
-            print(cmd)
-            return cmd.do_cmd(self, *args)
+            if args is not None:
+                kwargs = {}
+                normargs = []
+                for arg in args:
+                    if arg.startswith('--'):
+                        name, value = arg[2:].split('=')
+                        kwargs[name] = value
+                    elif arg.startswith('-'):
+                        for name in arg[1:]:
+                            kwargs[name] = True
+                    else:
+                        normargs.append(arg)
+            return getattr(cmd, 'do_%s' % (cmd_name,))(self, *normargs, **kwargs)
         except TypeError:
             self.tell('Too many/few arguments to given to %s\n' % (cmd_name,))
             return False
         except:
-            print('uh..')
             pass
             return False
 
