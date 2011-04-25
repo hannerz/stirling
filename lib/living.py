@@ -9,11 +9,12 @@ The master object of the MUD, all objects inherit it at some point
 import sys
 
 from stirling.lib.std.object import MasterObject
+from stirling.lib.std.cmd_helpers import find_cmd
 
 class Living(MasterObject):
     def __init__(self):
         super(Living, self).__init__()
-        self.command_modules = ['std.cmd']
+        self.cmd_modules = ['std.cmd']
 
     def parse_line(self, line):
         words = line.split()
@@ -22,16 +23,8 @@ class Living(MasterObject):
             args = words[1:]
         except:
             args = None
-        # check if given command exists in the command modules
-        for module in self.command_modules:
-            try:
-                __import__('stirling.lib.%s.%s' % (module, cmd_name)) # try to import it
-                cmd = sys.modules['stirling.lib.%s.%s' % (module, cmd_name)]
-                break
-            except ImportError: 
-                continue # not here, check the next one
-        else:   
-            # command doesn't exist
+        cmd = find_cmd(cmd_name, self.cmd_modules)
+        if not cmd:
             self.tell('No such command: %s\n' % (cmd_name,))
             return False
         try:

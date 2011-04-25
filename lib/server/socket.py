@@ -66,12 +66,14 @@ def runserver():
     server = StirlingServer(('localhost', 5878))
     try:
         server.handle_forever()
-    except:
+    except KeyboardInterrupt:
         print('recived ^C, closing down')
         print(c.connections)
         [c.close() for c in server.connections]
         print(c.connections)
         server.socket.close()
         print('sockets closed, goodbye')
+        raise
+    except:
         raise
 

@@ -10,4 +10,8 @@ log.debug('main')
 sys.path.append('../')
 from stirling.lib.server.socket import  runserver
 
-runserver()
+try:
+    runserver()
+except:
+    log.debug('exception!', exc_info=sys.exc_info())
+    pass
