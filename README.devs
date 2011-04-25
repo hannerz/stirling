@@ -1,21 +1,7 @@
-    So, you're thinking about writing code using the Stirling engine?  Good!  
-And you want to make sure that you play nice with our main developers, so that 
-your code can get added to the official code?  Great!
-    In order to make sure that you and I can help each other with as little 
-friction as possible, it's important you read a bit on how the project is 
-managed.
+This should be all the information most people should need to get started; 
+a newbie guide will be written when there's enough for newbies to feasibly 
+work with (ETA: 2040)
 
-    First, you should know, each and every developer on this project is a 
-complete and total git.  That is, we all use the software "git" for our 
-versioning control, and manage the project at github.com.  So, if you want to 
-participate with us, the first step will be to gain a basic understanding 
-of how to use git and github.  If you have any questions about that, see 
-/docs/dev/git
-
-    Second, you should know that I'm [emsenn] not a very good developer.  If 
-you find some code of mine that you think is total rubbish, feel free to rewrite 
-it in a way that makes more sense.
-
-    Third, if your code is ugly, uncommented, and you're a jerk about submitting 
-it, it will probably be denied out of hand.  Sorry, but we have to be able to 
-bugtest it and probably change it later.
+git: git://github.com/emsenn/stirling.git
+Github: https://github.com/emsenn/stirling
+IRC: irc://irc.subluminal.net:6667 #stirling

@@ -15,6 +15,7 @@ class MasterObject:
         # makes this kind of null and void.  Can we overwrite that if it's 
         # the proper approach?
         self.name = 'object'
+        self.desc = 'This is a thing.'
         self.inventory = []
         self.environment = __class__ # This *does* make a blank class, right?
 
@@ -25,6 +26,12 @@ class MasterObject:
         return
     def name(self):
         return name
+
+    def set_desc(self, desc):
+        if isinstance(desc, str):
+            self.desc = desc
+    def desc(self):
+        return desc
 
 
     # Move and remove
