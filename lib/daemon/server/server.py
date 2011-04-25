@@ -55,9 +55,6 @@ class StirlingServer():
                         # object.
                         player = self.connections_player[conn]
                         player.handle_data(recv_data)
-                        conn.send(b'At this point, this is where test functions run.\n')
-                        # TEST FUNCTIONS GO HERE.  yes it's hackish, no I don't care.
-                        from stirling.lib.daemon.database import Database
     def handle_forever(self):
         while True:
             self.handle()

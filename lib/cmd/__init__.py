@@ -1,6 +1,6 @@
 import sys
 
-def _find_cmd(cmd_name, cmd_modules):
+def find_cmd(cmd_name, cmd_modules):
     # check if given command exists in the command modules
     for module in cmd_modules:
         try:
