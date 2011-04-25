@@ -9,6 +9,7 @@ The master object of the MUD, all objects inherit it at some point
 import sys
 
 from stirling.lib.obj.object import MasterObject
+from stirling.lib.cmd import _find_cmd
 
 class Living(MasterObject):
     def __init__(self):
@@ -25,13 +26,7 @@ class Living(MasterObject):
             args = words[1:]
         except:
             args = None
-        for module in self.cmd_modules:
-            try:
-                __import__('stirling.lib.%s.%s' % (module, cmd_name))
-                cmd = sys.modules['stirling.lib.%s.%s' % (module, cmd_name)]
-            except ImportError:
-                continue
-        # cmd = self.find_cmd(cmd_name, self.cmd_modules)
+        cmd = _find_cmd(cmd_name, self.cmd_modules)
         if not cmd:
             self.tell('No such command: %s\n' % (cmd_name,))
             return False
