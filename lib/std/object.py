@@ -19,7 +19,6 @@ class MasterObject:
         self.inventory = []
         self.environment = __class__ # This *does* make a blank class, right?
 
-
     # The two most basic functions: give an object a name and query it.
     def set_name(self, name):
         if isinstance(name, str):
