@@ -6,7 +6,7 @@ abzde@Stirling 100411
 to players.
 """
 
-from stirling.lib.living import Living
+from stirling.lib.obj.living import Living
 
 class Player(Living):
     def __init__(self, username, conn):
@@ -19,5 +19,4 @@ class Player(Living):
         self.connection.send(bytes(data, 'UTF-8'))
 
     def handle_data(self, data):
-        self.tell("recieved: %s\n" % (data,))
         self.parse_line(data)

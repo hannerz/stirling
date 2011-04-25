@@ -12,8 +12,8 @@ import select
 import random
 import string
 
-from stirling.lib.special.player import Player
-from stirling.lib.std.room import Room
+from stirling.lib.obj.spec.player import Player
+from stirling.lib.obj.room import Room
 
 class StirlingServer():
     def __init__(self, addr):
@@ -57,7 +57,7 @@ class StirlingServer():
                         player.handle_data(recv_data)
                         conn.send(b'At this point, this is where test functions run.\n')
                         # TEST FUNCTIONS GO HERE.  yes it's hackish, no I don't care.
-                        from stirling.lib.special.database import Database
+                        from stirling.lib.daemon.database import Database
     def handle_forever(self):
         while True:
             self.handle()
