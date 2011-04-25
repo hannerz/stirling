@@ -12,6 +12,8 @@ from stirling.lib.daemon.server.server import runserver
 
 try:
     runserver()
+except SystemExit:
+    exit()
 except:
     log.debug('exception!', exc_info=sys.exc_info())
     pass

@@ -65,10 +65,8 @@ def runserver():
         server.handle_forever()
     except KeyboardInterrupt:
         print('recived ^C, closing down')
-        print(c.connections)
-        [c.close() for c in server.connections]
-        print(c.connections)
+        for c in server.connections:
+            c.close()
         server.socket.close()
         print('sockets closed, goodbye')
-        raise
-
+        exit()
