@@ -74,6 +74,4 @@ def runserver():
         server.socket.close()
         print('sockets closed, goodbye')
         raise
-    except:
-        raise
 
