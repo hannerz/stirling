@@ -18,6 +18,8 @@ class Living(MasterObject):
     def parse_line(self, line):
         cmd = False
         words = line.split()
+        if len(words) == 0:
+            return False
         cmd_name = words[0]
         try:
             args = words[1:]
