@@ -7,7 +7,6 @@ The master object of the MUD, all objects inherit it at some point
 """
 
 
-
 class MasterObject:
     def __init__(self):
         # Any variable which should be persistent needs to be set to default 

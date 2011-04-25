@@ -7,6 +7,7 @@ to players.
 """
 
 from stirling.lib.std.object import MasterObject
+from stirling.lib.special.database import Database
 
 class Player(MasterObject):
     def __init__(self, username, conn):
@@ -20,3 +21,4 @@ class Player(MasterObject):
 
     def handle_data(self, data):
         self.tell("recieved: %s\n" % (data,))
+

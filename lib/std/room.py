@@ -8,7 +8,7 @@ emsenn@Stirling 190411
 from stirling.lib.std.object import MasterObject
 
 class Room(MasterObject):
-    def def__init__(self):
+    def __init__(self):
         super(Room, self).__init__()
         self.exits = []
     def write(self, data):
