@@ -8,7 +8,7 @@ log.setLevel(logging.DEBUG)
 log.debug('main')
 
 sys.path.append('../')
-from stirling.lib.server.socket import  runserver
+from stirling.lib.daemon.server.server import  runserver
 
 try:
     runserver()
