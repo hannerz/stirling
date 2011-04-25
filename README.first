@@ -1,57 +1,9 @@
-    This document is a list of questions and answers meant to help explain what 
-Stirling is, to someone with absolutely no knowledge of what a textual 
-multiplayer roleplaying game is.  If you're just starting off, read this first!
+Dependencies:
+    Python 3.2
+    1.8.1
 
+(Earlier versions may work, but I used these versions.)
 
-What is Stirling?
-
-    Stirling is an engine, written in Python 3.2, for creating engaging and 
-deep textual multiplayer roleplaying game.
-
-
-What's a textual... whatever you just said.
-
-    Textual multiplayer roleplaying game?  If you're familiar with games such 
-as World of Warcraft, Eve Online, or any other MMORPG like EverQuest, it might 
-help to think of Stirling as an engine for making a game like that, but without 
-the pictures.
-    In truth, Stirling is much more related to the predecessor of all those 
-games listed above: the MUD, or multi-user dimension.  Originally created by 
-Richard Bartle, MUDs were really the first MMO, created long before most 
-computers could play any graphical game.  MUDs used words and numbers to 
-represent their game world, rather than the avatars and environments of today's 
-MMORPGs.
-    Stirling takes the text-based nature of MUDs - which was a necessity of 
-the hardware at the time -  and treats it as a feature.  There is a lot that 
-can be done with a text game, and Stirling aims to prove it.
-
-
-Okay, so it's an MMORPG with words, like a story.  But how do you *play*?
-
-    In order to interact with the game, you type in what you would like 
-to do.  If you want to look at your surroundings, you would type "look".  If 
-you want to sell your firstborn, "haggle price of firstborn with gypsy".  The 
-entire game is represented via text, so that's how you interact with it.
-
-
-Why on earth would I want to type that stuff when I could just play a normal 
-MMORPG and just click on stuff?
-
-    For the same reason people still read Lord of the Rings, rather than just go 
-watch the movie: text is the best medium for it.  Sure, Stirling could have been 
-written as a graphical game.  But then some features we have planned (such as 
-neighborhoods being able to transition from slums to lavish mansions, or combat 
-where you might die two weeks later of an infection) would be nearly impossible.  
-Like I said earlier, Stirling plans to take the fact that we're a text-based 
-game and treat it like a feature.
-
-
-What was that you said about infection?  And slums?
-
-    Stirling is a fresh look at what textual roleplaying games can be, and as 
-such, we have planned a lot of features that are, to the best of our knowledge, 
-unique in any MMORPG.  If you want to read more about any given element of 
-Stirling's gameplay, check out /docs/concepts/mechanics/.  Or, of course, log 
-in and look at them first hand.
+To run, execute runserver.py
 
 
