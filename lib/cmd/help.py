@@ -1,6 +1,6 @@
 import sys
 
-from stirling.lib.cmd import _find_cmd
+from stirling.lib.cmd import find_cmd
 
 def trim(docstring):
     if not docstring:
@@ -33,11 +33,11 @@ def do_help(obj, cmd_name=None):
         returns command specific help or this help message
     '''
     if cmd_name:
-        cmd = _find_cmd(cmd_name, obj.cmd_modules)
+        cmd = find_cmd(cmd_name, obj.cmd_modules)
         try:
             doc = getattr(cmd, 'do_%s' % (cmd_name,)).__doc__
         except:
-            doc = 'No help for this command..\n'
+            doc = 'No help for this command.\n'
         obj.tell(trim(doc))
     else:
         obj.tell('This is stirling mud. Try `help <command name>` for help ' +
