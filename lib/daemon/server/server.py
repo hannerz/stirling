@@ -18,6 +18,7 @@ from stirling.lib.obj.room import Room
 class StirlingServer():
     def __init__(self, addr):
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         self.socket.bind(addr)
         self.socket.listen(5)
         self.connections = []
