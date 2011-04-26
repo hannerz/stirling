@@ -13,7 +13,9 @@ class Garden(Room):
     def __init__(self):
         super(Garden, self).__init__()
         self.set_name('peaceful garden')
-        self.set_desc('Enclosed by the brick walls and windows of the adjacent '
-          'buildings, this small grassy garden seems very private.  There is a '
-          'small stone bench nestled up against the trunk of a blossoming '
-          'cherry tree, short dense grass filling the rest of the area.')
+        self.set_desc('Enclosed by a tall wooden fence, this small grassy '
+          'garden seems very private.  There is a small stone bench nestled up '
+          'against the trunk of a blossoming cherry tree, short dense grass '
+          'filling the rest of the area.  There is a door leading into the '
+          'house to the south.')
+#       self.set_exits(['south':'stirling.world.dev.room.house'])
