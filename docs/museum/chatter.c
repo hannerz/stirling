@@ -1,3 +1,10 @@
+/* This is a historical file, kept for nostaliga only.
+ *
+ * This is an early draft of the call-response AI which NPCs had under the first 
+ * iteration of the MUD.
+ */
+
+
 /*    /daemon/.c
  *    from the Canland LPC Library
  *    handles NPC's knowledge base

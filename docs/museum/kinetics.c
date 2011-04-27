@@ -1,3 +1,5 @@
+/* Historical file - first iteration of town dynamicism */
+
 /*    /secure/daemon/kinetics
  *    from the CanLAND LPC Library
  *    manage faction and town stats
