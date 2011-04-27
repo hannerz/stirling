@@ -4,6 +4,7 @@ import sys
 import logging
 
 log = logging.getLogger('main')
+log.addHandler(logging.StreamHandler())
 log.setLevel(logging.DEBUG)
 log.debug('main')
 
