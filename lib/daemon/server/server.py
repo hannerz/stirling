@@ -19,8 +19,9 @@ from stirling.world.dev.room.garden import Garden
 class StirlingServer():
     def __init__(self, addr):
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         self.socket.bind(addr)
-        self.socket.listen(5)
+        self.socket.listen(10)
         self.connections = []
         self.logging_in = []
         self.connections_player = {} #{connection: player} mapping
