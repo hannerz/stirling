@@ -6,7 +6,7 @@ abzde@Stirling 100411
 to players.
 """
 
-from stirling.lib.obj.living.living import Living
+from stirling.obj.living.living import Living
 
 class Player(Living):
     def __init__(self, username, conn):

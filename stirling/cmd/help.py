@@ -1,5 +1,4 @@
 import sys
-
 from stirling.lib.cmd import find_cmd
 
 def trim(docstring):

@@ -7,7 +7,7 @@ Part of the test suite, this is an example garden.  At the moment it simply
 demonstrates available room functions, nothing special.
 '''
 
-from stirling.lib.obj.room import Room
+from stirling.obj.room import Room
 
 class Garden(Room):
     def __init__(self):

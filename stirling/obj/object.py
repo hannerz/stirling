@@ -1,11 +1,13 @@
 """
 /lib/std/object.py
 abzde@Stirling
-150411 emsenn@Stirling
+280411 emsenn@Stirling
 
 The master object of the MUD, all objects inherit it at some point
 """
 
+import logging
+logging.basicConfig(level=logging.DEBUG)
 
 class MasterObject:
     def __init__(self):
@@ -18,7 +20,13 @@ class MasterObject:
         self.desc = 'This is a thing.'
         self.inventory = []
         self.environment = __class__ # This *does* make a blank class, right?
+        self.logger = logging.getLogger(self.__module__)
+        self.logger.debug('Initalized')
 
+    def debug(self, message):
+        self.logger.debug(message)
+    def info(self, message):
+        self.logger.info(message)
     # The two most basic functions: give an object a name and query it.
     def set_name(self, name):
         if isinstance(name, str):
