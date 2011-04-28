@@ -73,9 +73,9 @@ def runserver():
     try:
         server.handle_forever()
     except KeyboardInterrupt:
-        logger.info('Received ^C, closing down')
+        self.info('Received ^C, closing down')
         for c in server.connections:
             c.close()
         server.socket.close()
-        logger.info('Sockets closed, goodbye')
+        self.info('Sockets closed, goodbye')
         exit()
