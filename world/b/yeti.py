@@ -6,7 +6,7 @@ ploosk@Stirling
 The yeti. The Yeti.
 '''
 
-from stirling.lib.obj.living.npc import NPC
+from stirling.obj.living.npc import NPC
 
 class Yeti(NPC):
     def __init__(self):

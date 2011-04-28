@@ -1,5 +1,6 @@
-
-from stirling.lib.std.object import MasterObject
+'''
+A funky cigarette!  Written to celebrate April 20, 2011
+from stirling.obj.object import MasterObject
 
 class FunkyCigarette(MasterObject):
     def __init__(self):
