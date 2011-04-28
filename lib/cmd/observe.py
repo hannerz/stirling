@@ -1,3 +1,6 @@
+import logging
+logger = logging.getLogger(__name__)
+logger.debug('Imported')
 
 def do_observe(obj, target="here"):
     '''

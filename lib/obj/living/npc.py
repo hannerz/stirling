@@ -7,6 +7,10 @@ emsenn@Stirling
 *shrug*.
 """
 
+import logging
+logger = logging.getLogger(__name__)
+logger.debug('Imported')
+
 from stirling.lib.obj.living.living import Living
 
 class NPC(Living):

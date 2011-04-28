@@ -1,3 +1,7 @@
+import logging
+logger = logging.getLogger(__name__)
+logger.debug('Imported')
+
 import sys
 
 def find_cmd(cmd_name, cmd_modules):

@@ -1,5 +1,9 @@
 import sys
 
+import logging
+logger = logging.getLogger(__name__)
+logger.debug('Imported')
+
 from stirling.lib.cmd import find_cmd
 
 def trim(docstring):
