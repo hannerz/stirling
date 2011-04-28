@@ -12,6 +12,10 @@ import select
 import random
 import string
 
+import logging
+logger = logging.getLogger(__name__)
+logger.debug('Imported')
+
 from stirling.lib.obj.spec.player import Player
 from stirling.lib.obj.room import Room
 
@@ -35,11 +39,13 @@ class StirlingServer():
                 self.logging_in.append(new_conn)
                 # Connects are shown this first.
                 new_conn.send(b'Welcome to the Stirling Engine.\n')
+                logger.info('New player connected.')
             elif conn in self.connections:
                 recv_data = conn.recv(1024).decode()
                 if recv_data == '':
                     # Connection closed.
                     conn.close()
+                    logger.info('Player {0} disconnected.'.format(self.connections_player[conn].name))
                     if conn in self.connections_player: del self.connections_player[conn]
                     self.connections.remove(conn)
                 else:
@@ -50,10 +56,12 @@ class StirlingServer():
                         self.connections_player[conn] = player
                         self.logging_in.remove(conn)
                         conn.send(b'In theory, you should be logged in.\n')
+                        logger.info('Player logged in as {0}'.format(username))
                     else:
                         # If they've been logged in, pass the text to the player's
                         # object.
                         player = self.connections_player[conn]
+                        logger.debug('Received data from {0}: {1}'.format(player.name, recv_data))
                         player.handle_data(recv_data)
     def handle_forever(self):
         while True:
@@ -64,9 +72,9 @@ def runserver():
     try:
         server.handle_forever()
     except KeyboardInterrupt:
-        print('recived ^C, closing down')
+        logger.info('Received ^C, closing down')
         for c in server.connections:
             c.close()
         server.socket.close()
-        print('sockets closed, goodbye')
+        logger.info('Sockets closed, goodbye')
         exit()

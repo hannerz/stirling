@@ -3,15 +3,15 @@
 import sys
 import logging
 
-log = logging.getLogger('main')
-log.addHandler(logging.StreamHandler())
-log.setLevel(logging.DEBUG)
+logging.basicConfig(level=logging.DEBUG)
+log = logging.getLogger(__name__)
 log.debug('main')
 
 sys.path.append('../')
 from stirling.lib.daemon.server.server import runserver
 
 try:
+    log.info('Starting server')
     runserver()
 except SystemExit:
     exit()
