@@ -10,7 +10,7 @@ def do_observe(obj, target="here"):
     '''
     if target is "here":
         obj.tell("Foobar!")
-        print(obj.environment)
+        print(obj.environment.name())
         obj.tell(obj.environment.desc())
     else:
         obj.tell("Sorry, this command can't handle arguments yet")
