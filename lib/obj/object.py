@@ -6,6 +6,9 @@ abzde@Stirling
 The master object of the MUD, all objects inherit it at some point
 """
 
+import logging
+logger = logging.getLogger(__name__)
+logger.debug('Imported')
 
 class MasterObject:
     def __init__(self):

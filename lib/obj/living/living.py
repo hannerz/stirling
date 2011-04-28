@@ -8,6 +8,10 @@ The master object of the MUD, all objects inherit it at some point
 
 import sys
 
+import logging
+logger = logging.getLogger(__name__)
+logger.debug('Imported')
+
 from stirling.lib.obj.object import MasterObject
 from stirling.lib.cmd import find_cmd
 

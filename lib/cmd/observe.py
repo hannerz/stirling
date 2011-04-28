@@ -1,4 +1,7 @@
-from stirling.lib.obj.room import Room
+import logging
+logger = logging.getLogger(__name__)
+logger.debug('Imported')
+>>>>>>> fa8c933f5e8c4c5dec268924cd2b804438fae530
 
 def do_observe(obj, target="here"):
     '''
