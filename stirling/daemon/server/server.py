@@ -1,7 +1,7 @@
 """
-/lib/server/socket.py
+/lib/server/server.py
 abzde@Stirling
-100411
+280411 emsenn@Stirling
 
 The main socket server of Stirling.  Really overly simple at the moment, 
 but as we're just getting started, not too set on what we need.
@@ -12,16 +12,13 @@ import select
 import random
 import string
 
-import logging
-logger = logging.getLogger(__name__)
-logger.debug('Imported')
+from stirling.obj.spec.daemon import Daemon
+from stirling.obj.spec.player import Player
+from world.dev.room.garden import Garden
 
-from stirling.lib.obj.spec.player import Player
-from stirling.lib.obj.room import Room
-from stirling.world.dev.room.garden import Garden
-
-class StirlingServer():
+class StirlingServer(Daemon):
     def __init__(self, addr):
+        super(StirlingServer, self).__init__()
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         self.socket.bind(addr)
@@ -40,18 +37,14 @@ class StirlingServer():
                 # Add them to the login queue.
                 self.logging_in.append(new_conn)
                 # Connects are shown this first.
-<<<<<<< HEAD
                 new_conn.send(b'Welcome to the Stirling Engine.  Please hit enter.\n')
-=======
-                new_conn.send(b'Welcome to the Stirling Engine.\n')
-                logger.info('New player connected.')
->>>>>>> fa8c933f5e8c4c5dec268924cd2b804438fae530
+                self.info('New player connected.')
             elif conn in self.connections:
                 recv_data = conn.recv(1024).decode()
                 if recv_data == '':
                     # Connection closed.
                     conn.close()
-                    logger.info('Player {0} disconnected.'.format(self.connections_player[conn].name))
+                    self.info('Player {0} disconnected.'.format(self.connections_player[conn].name))
                     if conn in self.connections_player: del self.connections_player[conn]
                     self.connections.remove(conn)
                 else:
@@ -60,19 +53,16 @@ class StirlingServer():
                         username=''.join(random.choice(string.ascii_lowercase) for x in range(8))
                         player = Player(username, conn)
                         self.connections_player[conn] = player
-                        player.move(Garden)
+                        foobar = Garden()
+                        player.move(foobar)
                         self.logging_in.remove(conn)
-<<<<<<< HEAD
                         conn.send(b'You are now logged in, congrats.\n')
-=======
-                        conn.send(b'In theory, you should be logged in.\n')
-                        logger.info('Player logged in as {0}'.format(username))
->>>>>>> fa8c933f5e8c4c5dec268924cd2b804438fae530
+                        self.info('Player logged in as {0}'.format(username))
                     else:
                         # If they've been logged in, pass the text to the player's
                         # object.
                         player = self.connections_player[conn]
-                        logger.debug('Received data from {0}: {1}'.format(player.name, recv_data))
+                        self.debug('Received data from {0}: {1}'.format(player.name, recv_data))
                         player.handle_data(recv_data)
     def handle_forever(self):
         while True:

@@ -5,11 +5,7 @@ emsenn@Stirling 190411
     The base room inheritable
 """
 
-import logging
-logger = logging.getLogger(__name__)
-logger.debug('Imported')
-
-from stirling.lib.obj.object import MasterObject
+from stirling.obj.object import MasterObject
 
 class Room(MasterObject):
     def __init__(self):

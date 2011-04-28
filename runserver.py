@@ -8,7 +8,7 @@ log = logging.getLogger(__name__)
 log.debug('main')
 
 sys.path.append('../')
-from stirling.lib.daemon.server.server import runserver
+from stirling.daemon.server.server import runserver
 
 try:
     log.info('Starting server')

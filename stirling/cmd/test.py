@@ -1,7 +1,3 @@
-import logging
-logger = logging.getLogger(__name__)
-logger.debug('Imported')
-
 def do_test(obj, *a, **kw):
     '''
     usage: test [boolean] [kv] [target]
