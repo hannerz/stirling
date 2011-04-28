@@ -14,6 +14,7 @@ import string
 
 from stirling.lib.obj.spec.player import Player
 from stirling.lib.obj.room import Room
+from stirling.world.dev.room.garden import Garden
 
 class StirlingServer():
     def __init__(self, addr):
@@ -34,7 +35,7 @@ class StirlingServer():
                 # Add them to the login queue.
                 self.logging_in.append(new_conn)
                 # Connects are shown this first.
-                new_conn.send(b'Welcome to the Stirling Engine.\n')
+                new_conn.send(b'Welcome to the Stirling Engine.  Please hit enter.\n')
             elif conn in self.connections:
                 recv_data = conn.recv(1024).decode()
                 if recv_data == '':
@@ -48,8 +49,9 @@ class StirlingServer():
                         username=''.join(random.choice(string.ascii_lowercase) for x in range(8))
                         player = Player(username, conn)
                         self.connections_player[conn] = player
+                        player.move(Garden)
                         self.logging_in.remove(conn)
-                        conn.send(b'In theory, you should be logged in.\n')
+                        conn.send(b'You are now logged in, congrats.\n')
                     else:
                         # If they've been logged in, pass the text to the player's
                         # object.
