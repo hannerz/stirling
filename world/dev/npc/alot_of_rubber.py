@@ -6,7 +6,7 @@ emsenn@Stirling
 Part of the test suite, this is an alot.
 '''
 
-from stirling.lib.obj.living.npc import NPC
+from stirling.obj.living.npc import NPC
 
 class Alot(NPC):
     def __init__(self):

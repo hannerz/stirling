@@ -32,14 +32,10 @@ class MasterObject:
         if isinstance(name, str):
             self.name = name
         return
-    def name(self):
-        return name
 
     def set_desc(self, desc):
         if isinstance(desc, str):
             self.desc = desc
-    def desc(self):
-        return desc
 
 
     # Move and remove
