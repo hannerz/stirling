@@ -45,6 +45,11 @@ class MasterObject:
             if self.nametags.count(tag) is 0:
                 self.nametags.append(tag)
                 return
+        if isinstance(tag, list):
+            for item in tag:
+                if self.nametags.count(tag) is 0:
+                    self.nametags.append(tag)
+                    return
     def rm_nametag(self, tag):
         if isinstance(tag, str):
             if self.nametags.count(tag) is 0:
