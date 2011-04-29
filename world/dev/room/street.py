@@ -6,7 +6,7 @@ emsenn@Stirling
 Part of the test suite, this is an example house.
 '''
 
-from stirling.lib.obj.room import Room
+from stirling.obj.room import Room
 
 class Street(Room):
     def __init__(self):

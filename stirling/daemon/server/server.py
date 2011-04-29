@@ -51,7 +51,8 @@ class StirlingServer(Daemon):
                     if conn in self.logging_in:
                         # Outline the login process here!
                         username=''.join(random.choice(string.ascii_lowercase) for x in range(8))
-                        player = Player(username, conn)
+                        player = Player(conn)
+                        player.set_name(username)
                         self.connections_player[conn] = player
                         foobar = Garden()
                         player.move(foobar)
@@ -73,9 +74,9 @@ def runserver():
     try:
         server.handle_forever()
     except KeyboardInterrupt:
-        logger.info('Received ^C, closing down')
+        server.info('Received ^C, closing down')
         for c in server.connections:
             c.close()
         server.socket.close()
-        logger.info('Sockets closed, goodbye')
+        server.info('Sockets closed, goodbye')
         exit()

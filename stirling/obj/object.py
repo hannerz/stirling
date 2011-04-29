@@ -16,31 +16,72 @@ class MasterObject:
         # (NOTE: Does this actually work?  I've read that [] is == None, which 
         # makes this kind of null and void.  Can we overwrite that if it's 
         # the proper approach?
-        self.name = 'object'
+        self.nametags = ['object']
+        self.name = 'generic thing'
         self.desc = 'This is a thing.'
         self.inventory = []
         self.environment = __class__ # This *does* make a blank class, right?
+        # Initialize the object's logging
         self.logger = logging.getLogger(self.__module__)
-        self.logger.debug('Initalized')
 
+    
     def debug(self, message):
         self.logger.debug(message)
+        return
     def info(self, message):
         self.logger.info(message)
-    # The two most basic functions: give an object a name and query it.
-    def set_name(self, name):
-        if isinstance(name, str):
-            self.name = name
         return
-    def name(self):
-        return name
+    def warning(self, message):
+        self.logger.warning(message)
+        self.tell('You have caused a minor error.  Please report:\n'+message)
+        return
+    def error(self, message):
+        self.logger.error(message)
+        self.tell('++ERROR++ Please report the following:\n'+message) 
+        return
+
+    def add_nametag(self, tag):
+        if isinstance(tag, str):
+            if self.nametags.count(tag) is 0:
+                self.nametags.append(tag)
+                return
+        if isinstance(tag, list):
+            for item in tag:
+                if self.nametags.count(tag) is 0:
+                    self.nametags.append(tag)
+                    return
+    def rm_nametag(self, tag):
+        if isinstance(tag, str):
+            if self.nametags.count(tag) is 0:
+                return
+            else:
+                self.nametags.remove(tag)
+                return
+    def has_nametag(self, tag):
+        if isinstance(tag, str):
+            if self.nametag.count(tag) >= 1:
+                return True
+            else:
+                return False
+
+
+    def set_name(self, name):
+        ''' set_name(name)
+            Sets the object's name to string 'name'.  An object's name acts as 
+            its main displayed identity.  For example, a man named Fat Sally 
+            might use set_name('Fat Sally')
+        '''
+        if isinstance(name, str):
+            self.rm_nametag(self.name)
+            self.add_nametag(name.lower())
+            self.name = name
+        else:
+            self.warning('set_name() passed incorrect type; expecting string')
+        return
 
     def set_desc(self, desc):
         if isinstance(desc, str):
             self.desc = desc
-    def desc(self):
-        return desc
-
 
     # Move and remove
     def move(self, destination):
@@ -74,5 +115,3 @@ class MasterObject:
         if isinstance(message, str):
             pass
         pass
-    
-    # Implement some sort of error handling

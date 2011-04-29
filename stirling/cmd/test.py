@@ -4,3 +4,5 @@ def do_test(obj, *a, **kw):
         All purpose test command, use it for whatever you need
     '''
     obj.tell("Test command results:\n")
+    for item in obj.nametags:
+        

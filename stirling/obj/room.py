@@ -10,6 +10,7 @@ from stirling.obj.object import MasterObject
 class Room(MasterObject):
     def __init__(self):
         super(Room, self).__init__()
+        self.rm_nametag('object')
         self.exits = []
     def write(self, data):
         """
